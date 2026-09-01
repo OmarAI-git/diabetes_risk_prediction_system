@@ -4,5 +4,8 @@ matplotlib
 seaborn
 scikit-learn
 fastapi
+uvicorn
 pydantic
 streamlit
+ipykernel
+imblearn
