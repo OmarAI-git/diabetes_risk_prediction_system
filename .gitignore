@@ -2,6 +2,6 @@ venv_diabetes_risk_prediction_project
 
 __pycache__
 
-/data
+*.csv
 
 *.pkl
