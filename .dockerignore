@@ -1,0 +1,15 @@
+.gitignore
+
+*.csv
+
+__pycache__
+
+venv_diabetes_risk_prediction_project
+
+mlartifacts
+
+mlflow.db
+
+*.ipynb
+
+*.db
