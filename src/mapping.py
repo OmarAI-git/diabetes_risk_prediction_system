@@ -1,27 +1,3 @@
-using_data = {
-  "HighBP": 0,
-  "HighChol": 0,
-  "CholCheck": 0,
-  "BMI": 0,
-  "Smoker": 0,
-  "Stroke": 0,
-  "HeartDiseaseorAttack": 0,
-  "PhysActivity": 0,
-  "Fruits": 0,
-  "Veggies": 0,
-  "HvyAlcoholConsump": 0,
-  "AnyHealthcare": 0,
-  "NoDocbcCost": 0,
-  "GenHlth": 0,
-  "MentHlth": 0,
-  "PhysHlth": 0,
-  "DiffWalk": 0,
-  "Sex": 0,
-  "Age": 0
-}
-
-
-
 class MappingData():
 
   def __init__(self, user_data: dict):
