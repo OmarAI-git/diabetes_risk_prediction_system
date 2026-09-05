@@ -8,6 +8,82 @@ An end-to-end machine learning project that predicts one of three diabetes-risk 
 
 The project includes a Streamlit user interface for entering patient indicators and a FastAPI service that loads the trained model and serves predictions.
 
+## Concepts Demonstrated
+
+This project demonstrates the complete path from health data to a usable machine learning application.
+
+### 1. Exploratory Data Analysis
+
+The project begins by exploring diabetes health-indicator data to understand its structure, distributions, relationships, and potential data-quality issues. The analysis is documented in `notebooks/EDA.ipynb` and uses tables and visualizations to support modeling decisions.
+
+### 2. Supervised Machine Learning
+
+This is a supervised multiclass classification problem. The model learns from labeled health and lifestyle records and predicts one of three target classes:
+
+- `0` - No diabetes
+- `1` - Pre-diabetes
+- `2` - Diabetes
+
+Model development and experimentation are documented in `notebooks/build_model.ipynb`.
+
+### 3. Feature Preparation and Encoding
+
+The model requires numeric features, while the Streamlit interface uses readable choices such as “Yes”, “No”, “excellent”, and “poor”. The mapping layer in `src/mapping.py` converts these user-friendly values into the numeric representation expected by the trained model. This includes binary encoding, general-health encoding, and age-group encoding.
+
+### 4. Model Serialization and Inference
+
+After training, the model is serialized as `models/model.pkl`. The FastAPI service loads this artifact when it starts, receives validated feature values, creates a pandas DataFrame, and returns a prediction during inference.
+
+### 5. API and Frontend Integration
+
+The application separates the user experience from the prediction service:
+
+- **Streamlit** provides the interactive form.
+- **FastAPI** exposes the `/predict` endpoint.
+- **HTTP requests** connect the frontend to the backend.
+- **Pydantic** validates incoming API data.
+
+This separation makes the model available both through the web interface and as a reusable API.
+
+### 6. Reproducible Data and Experimentation
+
+The project introduces practical MLOps concepts by tracking data with DVC and storing MLflow artifacts for experiment and model management. The goal is to keep data, experiments, and model files organized and reproducible as the project evolves.
+
+### 7. Containerization
+
+The included Dockerfile packages the FastAPI service with its Python dependencies. This provides a consistent environment for running the prediction API locally or deploying it to another system.
+
+## Tools and Technologies
+
+### Programming and Data Science
+
+- **Python** - Main programming language
+- **pandas** - Data loading, tabular transformation, and inference input preparation
+- **NumPy** - Numerical computing support
+- **scikit-learn** - Machine learning model development and prediction
+- **imbalanced-learn** - Tools for handling imbalanced classification data
+
+### Analysis and Visualization
+
+- **Jupyter Notebook** - Interactive analysis and model experimentation
+- **matplotlib** - General-purpose data visualization
+- **seaborn** - Statistical and exploratory visualizations
+
+### Application and API
+
+- **Streamlit** - Interactive frontend for collecting user inputs
+- **FastAPI** - REST API framework for serving predictions
+- **Uvicorn** - ASGI server used to run the FastAPI application
+- **Pydantic** - Request schema definition and validation
+- **Requests** - Communication between the Streamlit frontend and API
+
+### MLOps and Deployment
+
+- **MLflow** - Experiment and model artifact management
+- **DVC** - Version control for data files
+- **Docker** - Containerization of the prediction API
+- **virtualenv / venv** - Isolated Python environment for dependencies
+
 ## Features
 
 - Interactive Streamlit form for collecting health indicators
@@ -40,10 +116,6 @@ The project includes a Streamlit user interface for entering patient indicators 
 ├── requirements.txt
 └── README.md
 ```
-
-## Tech Stack
-
-Python, pandas, scikit-learn, FastAPI, Uvicorn, Streamlit, MLflow, DVC, Docker, matplotlib, and seaborn.
 
 ## Setup
 
